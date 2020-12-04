@@ -5,9 +5,10 @@ class Oystercard
   LIMIT = 90
   MIN_FARE = 1
 
-  def initialize
+  def initialize(current_journey = Journey.new)
     @balance = 0
     @history = []
+    @current_journey = current_journey
   end
 
   def top_up(amount)
@@ -16,10 +17,10 @@ class Oystercard
     @balance += amount
   end
 
-  def touch_in(station)
+  def touch_in(entry_station)
     fail "Insufficient funds" if @balance < MIN_FARE
 
-    @current_journey = Journey.new(station)
+    @current_journey = Journey.new(entry_station)
   end
 
   def in_journey?
