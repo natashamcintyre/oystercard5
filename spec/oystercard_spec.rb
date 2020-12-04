@@ -3,6 +3,7 @@ require "oystercard"
 describe Oystercard do
   let(:entry) { double :station }
   let(:exit) { double :station }
+  let(:journey_class) { Journey.new }
   # it "can create an instance of oystercard" do
   #   expect(subject).to be_kind_of(Oystercard)
   # end
@@ -13,6 +14,11 @@ describe Oystercard do
 
   it "gives a default balance of 0" do
     expect(subject.balance).to eq 0
+  end
+
+  it "initializes a journey class as the current journey" do
+    # allow(journey_class).to receive(:new)
+    expect(subject.current_journey).to be_instance_of(journey_class)
   end
 
   it "responds to the method top_up" do
