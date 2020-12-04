@@ -5,9 +5,10 @@ class Oystercard
   LIMIT = 90
   MIN_FARE = 1
 
-  def initialize
+  def initialize(current_journey = Journey.new)
     @balance = 0
     @history = []
+    @current_journey = current_journey
   end
 
   def top_up(amount)

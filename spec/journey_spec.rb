@@ -8,7 +8,7 @@ describe Journey do
   end
 
   it 'records exit station' do
-    subject.finish_journey(station)
+    subject.finish_journey(exit_station)
     expect(subject.exit_station).to be station
   end
 
