@@ -1,25 +1,23 @@
 require "oystercard"
+# require "journey"
 
 describe Oystercard do
   let(:entry) { double :station }
   let(:exit) { double :station }
-  let(:journey_class) { Journey.new }
-  # it "can create an instance of oystercard" do
-  #   expect(subject).to be_kind_of(Oystercard)
-  # end
+  # let(:journey_class) { double("Journey") }
+
   it { is_expected.to respond_to(:balance) }
-  # it "responds to the method balance" do
-  #   expect(subject).to respond_to(:balance)
-  # end
 
   it "gives a default balance of 0" do
     expect(subject.balance).to eq 0
   end
 
-  it "initializes a journey class as the current journey" do
-    # allow(journey_class).to receive(:new)
-    expect(subject.current_journey).to be_instance_of(journey_class)
-  end
+  # describe Journey do
+    let(:journey_class) { class_double("Journey") }
+    it "initializes a journey class as the current journey" do
+      expect(subject.current_journey).to be_instance_of(journey_class)
+    end
+  # end
 
   it "responds to the method top_up" do
     expect(subject).to respond_to(:top_up).with(1).argument
